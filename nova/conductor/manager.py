@@ -1106,6 +1106,7 @@ class ComputeTaskManager(base.Base):
                                      requested_networks, block_device_mapping,
                                      tags=None):
         # Add all the UUIDs for the instances
+        #import pydevd; pydevd.settrace(host="192.168.122.1",port=5678, stdoutToServer=False,stderrToServer=False)
         instance_uuids = [spec.instance_uuid for spec in request_specs]
         try:
             host_lists = self._schedule_instances(context, request_specs[0],
@@ -1170,6 +1171,7 @@ class ComputeTaskManager(base.Base):
                         context, host.service_host))
                 with obj_target_cell(instance, cell):
                     instance.create()
+                    
                     instances.append(instance)
                     cell_mapping_cache[instance.uuid] = cell
 
@@ -1201,6 +1203,7 @@ class ComputeTaskManager(base.Base):
             # host_list is a list of one or more Selection objects, the first
             # of which has been selected and its resources claimed.
             host = host_list.pop(0)
+            #import pydevd; pydevd.settrace(host="192.168.122.1",port=5678, stdoutToServer=False,stderrToServer=False)
             alts = [(alt.service_host, alt.nodename) for alt in host_list]
             LOG.debug("Selected host: %s; Selected node: %s; Alternates: %s",
                     host.service_host, host.nodename, alts, instance=instance)

@@ -1694,9 +1694,10 @@ class ComputeManager(manager.Manager):
                      injected_files=None, requested_networks=None,
                      security_groups=None, block_device_mapping=None,
                      node=None, limits=None, host_list=None):
-
+        
         @utils.synchronized(instance.uuid)
         def _locked_do_build_and_run_instance(*args, **kwargs):
+            # import pydevd; pydevd.settrace(host="192.168.122.1",port=5678, stdoutToServer=False,stderrToServer=False)
             # NOTE(danms): We grab the semaphore with the instance uuid
             # locked because we could wait in line to build this instance
             # for a while and we want to make sure that nothing else tries
@@ -1961,7 +1962,7 @@ class ComputeManager(manager.Manager):
             admin_password, requested_networks, security_groups,
             block_device_mapping, node, limits, filter_properties,
             request_spec=None):
-
+        #import pydevd; pydevd.settrace(host="192.168.122.1",port=5678, stdoutToServer=False,stderrToServer=False)
         image_name = image.get('name')
         self._notify_about_instance_usage(context, instance, 'create.start',
                 extra_usage_info={'image_name': image_name})

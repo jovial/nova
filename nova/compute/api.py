@@ -871,6 +871,7 @@ class API(base.Base):
         security_groups = self.security_group_api.populate_security_groups(
                 security_groups)
         self.security_group_api.ensure_default(context)
+        #import pydevd; pydevd.settrace(host="192.168.122.1",port=5678, stdoutToServer=False,stderrToServer=False)
         LOG.debug("Going to run %s instances...", num_instances)
         instances_to_build = []
         try:
@@ -2389,6 +2390,8 @@ class API(base.Base):
             search_opts = {}
 
         LOG.debug("Searching by: %s", str(search_opts))
+        
+        #import pydevd; pydevd.settrace(host="192.168.122.1",port=5678, stdoutToServer=False,stderrToServer=False)
 
         # Fixups for the DB call
         filters = {}

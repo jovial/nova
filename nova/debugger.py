@@ -22,8 +22,10 @@ import sys
 
 
 def enabled():
-    return ('--remote_debug-host' in sys.argv and
-            '--remote_debug-port' in sys.argv)
+    #return ('--remote_debug-host' in sys.argv and
+    #       '--remote_debug-port' in sys.argv)
+    # required to monkey patch event let
+    return False
 
 
 def init():

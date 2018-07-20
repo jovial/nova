@@ -21,4 +21,7 @@ if debugger.enabled():
     # turn off thread patching to enable the remote debugger
     eventlet.monkey_patch(os=False, thread=False)
 else:
+    #import pydevd; pydevd.settrace(host="192.168.122.1",port=5678, stdoutToServer=False,stderrToServer=False)
+    #import sys
+    #sys.setrecursionlimit(1000000)
     eventlet.monkey_patch(os=False)
